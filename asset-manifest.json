@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Practice_Improving_Skills/static/css/main.073c9b0a.css",
-    "main.js": "/Practice_Improving_Skills/static/js/main.665744ce.js",
+    "main.js": "/Practice_Improving_Skills/static/js/main.bc0a68bc.js",
     "static/js/787.5b728088.chunk.js": "/Practice_Improving_Skills/static/js/787.5b728088.chunk.js",
     "index.html": "/Practice_Improving_Skills/index.html",
     "main.073c9b0a.css.map": "/Practice_Improving_Skills/static/css/main.073c9b0a.css.map",
-    "main.665744ce.js.map": "/Practice_Improving_Skills/static/js/main.665744ce.js.map",
+    "main.bc0a68bc.js.map": "/Practice_Improving_Skills/static/js/main.bc0a68bc.js.map",
     "787.5b728088.chunk.js.map": "/Practice_Improving_Skills/static/js/787.5b728088.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.665744ce.js"
+    "static/js/main.bc0a68bc.js"
   ]
 }
