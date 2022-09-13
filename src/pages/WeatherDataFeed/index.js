@@ -225,7 +225,38 @@ function WeartherDataFeedPage() {
   let second = timeNow.getSeconds();
   const firstUpdate = useRef(true);
 
-  let updateDayGlobal = "";
+  const futureUpdate = new Date().setHours(hour + 1, 0, 0);
+
+  const minuteRemaining = Math.ceil((futureUpdate - timeNow) / 1000 / 60);
+
+  const hourRemaining = Math.floor((futureUpdate - timeNow) / 1000 / 60 / 60);
+
+  const [secondTimeRemain, setSecondTimeRemain] = useState();
+
+  const [secondTimeOut, setSecondTimeOut] = useState();
+
+  let totalSecondRemain = 0;
+
+  useEffect(() => {
+    setTimeout(
+      () =>
+        setSecondTimeRemain(
+          Math.round((((futureUpdate - timeNow) / 1000) % 60) - 1) >= 0
+            ? Math.round((((futureUpdate - timeNow) / 1000) % 60) - 1)
+            : 59
+        ),
+      1000
+    );
+    totalSecondRemain =
+      (hourRemaining * 60 + minuteRemaining) * 60 + secondTimeRemain - 1;
+    setSecondTimeOut(totalSecondRemain);
+    if (secondTimeOut - 61 === 0) {
+      console.log("Tổng giây còn lại: ", totalSecondRemain);
+      console.log("Giờ hiện tại: ", new Date().getHours());
+      setHourUpdate(new Date().getHours() + 1);
+      console.log("Hour update: " + hourUpdate);
+    }
+  }, [secondTimeRemain]);
 
   useEffect(() => {
     if (firstUpdate.current) {
@@ -239,7 +270,6 @@ function WeartherDataFeedPage() {
       // Phần dự báo header
       pushAttributeToObjectInArray("city", $("span.addName").text()); // Tên thành phố ở phần header
       let updateDay = $("div.mgT25 strong").text();
-      updateDayGlobal = updateDay;
       pushAttributeToObjectInArray("updateDay", updateDay); // Thời gian cập nhật
       if ($("table.tabTop span.ndBig").html() !== null) {
         pushAttributeToObjectInArray(
@@ -274,50 +304,31 @@ function WeartherDataFeedPage() {
       let weatherAnotherDay = weatherAnotherCity($, ".cont");
       sliceDesciptionTempAnotherDay(weatherAnotherDay, updateDay);
       const myObjStr = JSON.stringify(weatherBigData.data);
-      fetch(
-        "https://sheet.best/api/sheets/0e54b5be-0536-4f0c-b039-31dff3d6cb47",
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: myObjStr,
-        }
-      )
-        .then((r) => r.json())
-        .then((data) => {
-          // The response comes here
-          setTimeToUpdate(new Date().toLocaleString());
-        })
-        .catch((error) => {
-          // Errors are reported there
-          console.log(error);
-        });
+      // fetch(
+      //   "https://sheet.best/api/sheets/0e54b5be-0536-4f0c-b039-31dff3d6cb47",
+      //   {
+      //     method: "POST",
+      //     mode: "cors",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: myObjStr,
+      //   }
+      // )
+      //   .then((r) => r.json())
+      //   .then((data) => {
+      //     // The response comes here
+      //     setTimeToUpdate(new Date().toLocaleString());
+      //   })
+      //   .catch((error) => {
+      //     // Errors are reported there
+      //     console.log(error);
+      //   });
+      console.log("Fetch API");
     };
     getDataInHtml();
     setWeatherData(weatherBigData);
-    setTimeout(() => setHourUpdate(new Date().getHours()), 1000 * 60 * 60);
   }, [hourUpdate]);
-
-  const futureUpdate = new Date().setHours(hour + 1, 0, 0);
-
-  const minuteRemaining = Math.ceil((futureUpdate - timeNow) / 1000 / 60);
-
-  const hourRemaining = Math.floor((futureUpdate - timeNow) / 1000 / 60 / 60);
-
-  const [secondTimeRemain, setSecondTimeRemain] = useState();
-  useEffect(() => {
-    setTimeout(
-      () =>
-        setSecondTimeRemain(
-          Math.round((((futureUpdate - timeNow) / 1000) % 60) - 1) >= 0
-            ? Math.round((((futureUpdate - timeNow) / 1000) % 60) - 1)
-            : 59
-        ),
-      1000
-    );
-  }, [secondTimeRemain]);
 
   return (
     <>
