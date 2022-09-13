@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Practice_Improving_Skills/static/css/main.bdd332d5.css",
-    "main.js": "/Practice_Improving_Skills/static/js/main.06f3eb98.js",
+    "main.css": "/Practice_Improving_Skills/static/css/main.68db65cf.css",
+    "main.js": "/Practice_Improving_Skills/static/js/main.e0d96204.js",
     "static/js/787.5b728088.chunk.js": "/Practice_Improving_Skills/static/js/787.5b728088.chunk.js",
     "index.html": "/Practice_Improving_Skills/index.html",
-    "main.bdd332d5.css.map": "/Practice_Improving_Skills/static/css/main.bdd332d5.css.map",
-    "main.06f3eb98.js.map": "/Practice_Improving_Skills/static/js/main.06f3eb98.js.map",
+    "main.68db65cf.css.map": "/Practice_Improving_Skills/static/css/main.68db65cf.css.map",
+    "main.e0d96204.js.map": "/Practice_Improving_Skills/static/js/main.e0d96204.js.map",
     "787.5b728088.chunk.js.map": "/Practice_Improving_Skills/static/js/787.5b728088.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bdd332d5.css",
-    "static/js/main.06f3eb98.js"
+    "static/css/main.68db65cf.css",
+    "static/js/main.e0d96204.js"
   ]
 }
