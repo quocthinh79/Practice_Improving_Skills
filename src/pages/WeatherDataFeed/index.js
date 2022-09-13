@@ -304,26 +304,26 @@ function WeartherDataFeedPage() {
       let weatherAnotherDay = weatherAnotherCity($, ".cont");
       sliceDesciptionTempAnotherDay(weatherAnotherDay, updateDay);
       const myObjStr = JSON.stringify(weatherBigData.data);
-      // fetch(
-      //   "https://sheet.best/api/sheets/0e54b5be-0536-4f0c-b039-31dff3d6cb47",
-      //   {
-      //     method: "POST",
-      //     mode: "cors",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: myObjStr,
-      //   }
-      // )
-      //   .then((r) => r.json())
-      //   .then((data) => {
-      //     // The response comes here
-      //     setTimeToUpdate(new Date().toLocaleString());
-      //   })
-      //   .catch((error) => {
-      //     // Errors are reported there
-      //     console.log(error);
-      //   });
+      fetch(
+        "https://sheet.best/api/sheets/0e54b5be-0536-4f0c-b039-31dff3d6cb47",
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: myObjStr,
+        }
+      )
+        .then((r) => r.json())
+        .then((data) => {
+          // The response comes here
+          setTimeToUpdate(new Date().toLocaleString());
+        })
+        .catch((error) => {
+          // Errors are reported there
+          console.log(error);
+        });
       console.log("Fetch API");
     };
     getDataInHtml();

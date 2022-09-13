@@ -1,6 +1,7 @@
 import "./App.css";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { publicRoutes } from "./routes";
+import DefaultLayout from "./Layouts/DefaultLayout";
 
 function App() {
   return (
@@ -9,7 +10,17 @@ function App() {
         <Routes>
           {publicRoutes.map((route, index) => {
             const Page = route.page;
-            return <Route key={index} path={route.path} element={<Page />} />;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <DefaultLayout>
+                    <Page />
+                  </DefaultLayout>
+                }
+              />
+            );
           })}
         </Routes>
       </div>
