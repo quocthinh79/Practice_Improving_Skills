@@ -25,10 +25,14 @@ function Slidebar() {
       }
     >
       <div className={cx("close-and-open")} onClick={closeAndOpenSidebar}>
-        {openSidebar ? <FontAwesomeIcon icon={faChevronLeft} /> : <FontAwesomeIcon icon={faChevronRight} />}
+        {openSidebar ? (
+          <FontAwesomeIcon icon={faChevronLeft} />
+        ) : (
+          <FontAwesomeIcon icon={faChevronRight} />
+        )}
       </div>
-      {routesConfig.map((route) => (
-        <Link className={cx("siderbar-item")} to={route.path}>
+      {routesConfig.map((route, index) => (
+        <Link key={index} className={cx("siderbar-item")} to={route.path}>
           {route.name}
         </Link>
       ))}
