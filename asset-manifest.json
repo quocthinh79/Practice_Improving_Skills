@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Practice_Improving_Skills/static/css/main.3aa017cf.css",
-    "main.js": "/Practice_Improving_Skills/static/js/main.daaa0c8b.js",
+    "main.js": "/Practice_Improving_Skills/static/js/main.da8a153b.js",
     "static/js/787.5b728088.chunk.js": "/Practice_Improving_Skills/static/js/787.5b728088.chunk.js",
     "static/media/2.png": "/Practice_Improving_Skills/static/media/2.7cc244ea971167d97e27.png",
     "static/media/1.png": "/Practice_Improving_Skills/static/media/1.ecd508cdcd7cd6e45094.png",
@@ -9,11 +9,11 @@
     "static/media/3.png": "/Practice_Improving_Skills/static/media/3.ce9c707bd8961a2427d8.png",
     "index.html": "/Practice_Improving_Skills/index.html",
     "main.3aa017cf.css.map": "/Practice_Improving_Skills/static/css/main.3aa017cf.css.map",
-    "main.daaa0c8b.js.map": "/Practice_Improving_Skills/static/js/main.daaa0c8b.js.map",
+    "main.da8a153b.js.map": "/Practice_Improving_Skills/static/js/main.da8a153b.js.map",
     "787.5b728088.chunk.js.map": "/Practice_Improving_Skills/static/js/787.5b728088.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3aa017cf.css",
-    "static/js/main.daaa0c8b.js"
+    "static/js/main.da8a153b.js"
   ]
 }
