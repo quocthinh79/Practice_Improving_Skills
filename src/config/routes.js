@@ -11,6 +11,10 @@ const routes = [
     path: "/data-feed-weather",
     name: "Feed weather data",
   },
+  {
+    path: "/Lab1-animation",
+    name: "Lab 1",
+  },
 ];
 
 export default routes;
