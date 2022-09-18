@@ -12,6 +12,10 @@ const routes = [
     name: "Feed weather data",
   },
   {
+    path: "/data-feed-weather-2",
+    name: "Feed weather data 2",
+  },
+  {
     path: "/Lab1-animation",
     name: "Lab 1",
   },

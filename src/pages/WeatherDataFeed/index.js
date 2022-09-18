@@ -233,8 +233,6 @@ function WeartherDataFeedPage() {
 
   const [secondTimeRemain, setSecondTimeRemain] = useState();
 
-  const [secondTimeOut, setSecondTimeOut] = useState();
-
   let totalSecondRemain = 0;
 
   useEffect(() => {
@@ -249,8 +247,7 @@ function WeartherDataFeedPage() {
     );
     totalSecondRemain =
       (hourRemaining * 60 + minuteRemaining) * 60 + secondTimeRemain - 1;
-    setSecondTimeOut(totalSecondRemain);
-    if (secondTimeOut - 61 === 0) {
+    if (hourRemaining === 0 && minuteRemaining === 1 && secondTimeRemain <= 1) {
       console.log("Tổng giây còn lại: ", totalSecondRemain);
       console.log("Giờ hiện tại: ", new Date().getHours());
       setHourUpdate(new Date().getHours() + 1);
