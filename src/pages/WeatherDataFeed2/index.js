@@ -115,7 +115,10 @@ function WeatherDataFeed2() {
         .replace("Chất lượng không khí: ", "");
       pushAttributeToObjectInArray("ChatLuongKhongKhi", air);
       const updateTime = $("#timer").text().trim();
-      pushAttributeToObjectInArray("NgayCapNhat", updateTime);
+      pushAttributeToObjectInArray(
+        "NgayCapNhat",
+        updateTime.slice(updateTime.indexOf(" | ") + 4, updateTime.length)
+      );
 
       const doAmHienTai = $(
         ".current-location .d-flex.flex-wrap.justify-content-between.weather-detail.mt-2 > .d-flex:nth-child(2) span.text-white.op-8.fw-bold"
@@ -134,6 +137,12 @@ function WeatherDataFeed2() {
 
       // Ngày mai
       for (let i = 2; i <= 8; i++) {
+        console.log();
+        const currentDay = updateTime.slice(
+          updateTime.indexOf(" | ") + 4,
+          updateTime.length
+        );
+        const [day, month, year] = currentDay.split("/");
         const ngayToi = $(
           `.weather-feature .carousel-item.col-md-3:nth-child(${i}) .card-city-title`
         )
@@ -157,7 +166,10 @@ function WeatherDataFeed2() {
           .replaceAll(/[\n\r\s\t]+/g, " ");
         switch (i) {
           case 2:
-            pushAttributeToObjectInArray("NgayMai", ngayToi);
+            pushAttributeToObjectInArray(
+              "NgayMai",
+              `${parseInt(day) + 1}/${month}/${year}`
+            );
             pushAttributeToObjectInArray("LuongMuaNgayMai", luongMuaNgayToi);
             pushAttributeToObjectInArray("ThoiTietNgayMai", moTaNgayToi);
             pushAttributeToObjectInArray(
@@ -166,7 +178,10 @@ function WeatherDataFeed2() {
             );
             break;
           case 3:
-            pushAttributeToObjectInArray("NgayMot", ngayToi);
+            pushAttributeToObjectInArray(
+              "NgayMot",
+              `${parseInt(day) + 2}/${month}/${year}`
+            );
             pushAttributeToObjectInArray("LuongMuaNgayMot", luongMuaNgayToi);
             pushAttributeToObjectInArray("ThoiTietNgayMot", moTaNgayToi);
             pushAttributeToObjectInArray(
@@ -175,7 +190,10 @@ function WeatherDataFeed2() {
             );
             break;
           case 4:
-            pushAttributeToObjectInArray("BaNgayToi", ngayToi);
+            pushAttributeToObjectInArray(
+              "BaNgayToi",
+              `${parseInt(day) + 3}/${month}/${year}`
+            );
             pushAttributeToObjectInArray("LuongMuaBaNgayToi", luongMuaNgayToi);
             pushAttributeToObjectInArray("ThoiTietBaNgayToi", moTaNgayToi);
             pushAttributeToObjectInArray(
@@ -184,7 +202,10 @@ function WeatherDataFeed2() {
             );
             break;
           case 5:
-            pushAttributeToObjectInArray("BonNgayToi", ngayToi);
+            pushAttributeToObjectInArray(
+              "BonNgayToi",
+              `${parseInt(day) + 4}/${month}/${year}`
+            );
             pushAttributeToObjectInArray("LuongMuaBonNgayToi", luongMuaNgayToi);
             pushAttributeToObjectInArray("ThoiTietBonNgayToi", moTaNgayToi);
             pushAttributeToObjectInArray(
@@ -193,7 +214,10 @@ function WeatherDataFeed2() {
             );
             break;
           case 6:
-            pushAttributeToObjectInArray("NamNgayToi", ngayToi);
+            pushAttributeToObjectInArray(
+              "NamNgayToi",
+              `${parseInt(day) + 5}/${month}/${year}`
+            );
             pushAttributeToObjectInArray("LuongMuaNamNgayToi", luongMuaNgayToi);
             pushAttributeToObjectInArray("ThoiTietNamNgayToi", moTaNgayToi);
             pushAttributeToObjectInArray(
@@ -202,7 +226,10 @@ function WeatherDataFeed2() {
             );
             break;
           case 7:
-            pushAttributeToObjectInArray("SauNgayToi", ngayToi);
+            pushAttributeToObjectInArray(
+              "SauNgayToi",
+              `${parseInt(day) + 6}/${month}/${year}`
+            );
             pushAttributeToObjectInArray("LuongMuaSauNgayToi", luongMuaNgayToi);
             pushAttributeToObjectInArray("ThoiTietSauNgayToi", moTaNgayToi);
             pushAttributeToObjectInArray(
@@ -211,7 +238,10 @@ function WeatherDataFeed2() {
             );
             break;
           case 8:
-            pushAttributeToObjectInArray("BayNgayToi", ngayToi);
+            pushAttributeToObjectInArray(
+              "BayNgayToi",
+              `${parseInt(day) + 7}/${month}/${year}`
+            );
             pushAttributeToObjectInArray("LuongMuaBayNgayToi", luongMuaNgayToi);
             pushAttributeToObjectInArray("ThoiTietBayNgayToi", moTaNgayToi);
             pushAttributeToObjectInArray(
@@ -239,7 +269,7 @@ function WeatherDataFeed2() {
     var wb = XLSX.utils.book_new();
     var ws = XLSX.utils.json_to_sheet(data);
     XLSX.utils.book_append_sheet(wb, ws, `ThoiTietVN_${today}`);
-    XLSX.writeFile(wb, `ThoiTietVN_${today}.xlsx`);
+    XLSX.writeFile(wb, `ThoiTietVN_${today}.csv`);
   };
 
   return (
